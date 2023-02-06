@@ -1,0 +1,16 @@
+127.0.0.1 - - [29/Dec/2022:09:00:19 +0900] "GET / HTTP/1.1" 404 807
+0:0:0:0:0:0:0:1 - - [29/Dec/2022:09:00:20 +0900] "GET /First_Project/ HTTP/1.1" 404 825
+0:0:0:0:0:0:0:1 - - [29/Dec/2022:09:00:20 +0900] "GET /favicon.ico HTTP/1.1" 404 818
+0:0:0:0:0:0:0:1 - - [29/Dec/2022:09:00:22 +0900] "GET /mvc_ex/ HTTP/1.1" 404 818
+0:0:0:0:0:0:0:1 - - [29/Dec/2022:09:00:22 +0900] "GET /mvc_ex_XML/ HTTP/1.1" 404 822
+0:0:0:0:0:0:0:1 - - [29/Dec/2022:09:00:29 +0900] "GET /First_Project/main HTTP/1.1" 200 4833
+0:0:0:0:0:0:0:1 - - [29/Dec/2022:09:00:29 +0900] "GET /First_Project/resources/js/common.js HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [29/Dec/2022:09:00:30 +0900] "GET /First_Project/member/joinForm HTTP/1.1" 200 -
+0:0:0:0:0:0:0:1 - - [29/Dec/2022:09:01:15 +0900] "GET /First_Project/member/joinForm HTTP/1.1" 200 -
+0:0:0:0:0:0:0:1 - - [29/Dec/2022:09:03:06 +0900] "GET /First_Project/member/joinForm HTTP/1.1" 200 -
+0:0:0:0:0:0:0:1 - - [29/Dec/2022:09:03:11 +0900] "GET /First_Project/member/joinForm HTTP/1.1" 200 -
+0:0:0:0:0:0:0:1 - - [29/Dec/2022:09:03:16 +0900] "GET /First_Project/member/joinForm HTTP/1.1" 200 -
+0:0:0:0:0:0:0:1 - - [29/Dec/2022:09:04:34 +0900] "GET /First_Project/member/joinForm HTTP/1.1" 200 -
+0:0:0:0:0:0:0:1 - - [29/Dec/2022:09:04:52 +0900] "GET /First_Project/member/joinForm HTTP/1.1" 200 4444
+0:0:0:0:0:0:0:1 - - [29/Dec/2022:09:07:32 +0900] "POST /First_Project/member/join HTTP/1.1" 500 1429
+0:0:0:0:0:0:0:1 - - [29/Dec/2022:09:07:51 +0900] "POST /First_Project/member/join HTTP/1.1" 500 1429

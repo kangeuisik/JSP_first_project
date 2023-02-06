@@ -1,0 +1,9 @@
+package com.domain;
+
+public class RequestVO {
+	private int mno;
+	private String name;
+	private String militaryNo;
+	private String hopeDate;
+	private String reason;
+}

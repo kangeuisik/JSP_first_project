@@ -1,0 +1,35 @@
+package com.service;
+
+import java.util.List;
+
+import com.dao.BoardDao;
+import com.domain.AdminBoardVO;
+
+import lombok.AllArgsConstructor;
+
+@AllArgsConstructor
+public class AdminBoardService {
+	
+	private BoardDao dao;
+//글목록
+	public List<AdminBoardVO> BoardList() {
+		
+		return dao.BoardList();
+	}
+//글상세
+	public AdminBoardVO detailBoard(int abno) {
+		return dao.detailBoard(abno);
+	}
+//글쓰기
+	public int insertBoard(AdminBoardVO vo) {
+		return dao.insertBoard(vo);
+	}
+	
+	public void modBoard(AdminBoardVO vo) {
+		dao.modBoard(vo);
+	}
+	public void removeBoard(int abno) {
+		dao.removeBoard(abno);
+		
+	}
+}

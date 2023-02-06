@@ -1,0 +1,7 @@
+let replyService = {
+	list : function(bno){
+		console.log('list' + bno)
+	}
+	
+	
+	}

@@ -1,0 +1,14 @@
+package com.dao;
+
+import javax.sql.DataSource;
+
+import com.common.ConnectionUtil;
+
+public class ReplyDao {
+	
+	private DataSource dataSource;
+	
+	public ReplyDao() {
+		dataSource = ConnectionUtil.getDataSource();
+	}
+}

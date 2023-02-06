@@ -1,0 +1,15 @@
+package com.service;
+
+import com.dao.RequestDao;
+
+import lombok.AllArgsConstructor;
+
+@AllArgsConstructor
+public class RequestService {
+	
+	public RequestService(RequestDao dao) {
+	
+	}
+
+}
+

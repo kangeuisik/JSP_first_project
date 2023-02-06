@@ -1,0 +1,36 @@
+package com.service;
+
+import java.util.List;
+
+
+import com.dao.ParentsBoardDao;
+import com.domain.ParentsBoardVO;
+
+import lombok.AllArgsConstructor;
+@AllArgsConstructor
+public class ParentsBoardService {
+		
+		private ParentsBoardDao dao;
+	//글목록
+		public List<ParentsBoardVO> BoardList() {
+			
+			return dao.BoardList();
+		}
+	//글상세
+		public ParentsBoardVO detailBoard(int pbno) {
+			return dao.detailBoard(pbno);
+		}
+	//글쓰기
+		public int insertBoard(ParentsBoardVO vo) {
+			return dao.insertBoard(vo);
+		}
+		
+		public void modBoard(ParentsBoardVO vo) {
+			dao.modBoard(vo);
+		}
+		public void removeBoard(int pbno) {
+			dao.removeBoard(pbno);
+			
+		
+	}
+}

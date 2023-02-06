@@ -1,0 +1,40 @@
+package com.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.sql.DataSource;
+
+import com.common.ConnectionUtil;
+import com.domain.RequestVO;
+
+public class RequestDao {
+	
+	private DataSource dataSource;
+	
+	public RequestDao() {
+		dataSource = ConnectionUtil.getDataSource();
+	}
+	
+	//요청 결과 목록
+	public List<RequestVO> requestResultList(){
+		String query = "select * from board_request order by desc";
+		List<RequestVO> resultList = new ArrayList<RequestVO>();
+		try (
+			Connection conn = dataSource.getConnection();	
+			PreparedStatement pstmt = conn.prepareStatement(query);
+			ResultSet rs = pstmt.executeQuery();
+			){
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return resultList;
+		
+	}
+	
+}

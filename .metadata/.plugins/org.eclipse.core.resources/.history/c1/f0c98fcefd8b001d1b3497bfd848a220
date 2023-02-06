@@ -1,0 +1,27 @@
+package com.service;
+
+import java.util.List;
+
+import com.dao.RequestDao;
+import com.domain.RequestVO;
+
+import lombok.AllArgsConstructor;
+
+@AllArgsConstructor
+public class RequestService {
+	
+	RequestDao dao;
+	
+	
+
+	public List<RequestVO> resultList() {
+		
+		return dao.requestResultList();
+	}
+	public void request() {
+		return dao.request();
+		
+	}
+
+}
+

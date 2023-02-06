@@ -1,0 +1,63 @@
+package com.controller;
+
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.dao.RequestDao;
+import com.domain.RequestVO;
+import com.service.RequestService;
+
+
+@WebServlet("/requestboard")
+public class RequestController extends HttpServlet {
+
+     private RequestService service;
+
+     @Override
+    public void init(ServletConfig config) throws ServletException {
+    	 RequestDao dao = new RequestDao();
+    	 service = new RequestService(dao);
+    
+    }
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doHandle(request, response);
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doHandle(request, response);
+	}
+	protected void doHandle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String pathInfo = request.getPathInfo();
+		String contextPath = request.getContextPath();
+		final String PRE = "/WEB-INF/views/requestboard/";
+		final String SUR = ".jsp";
+		
+		String nextPage = null;
+		RequestDispatcher rd = null;
+		//요청 페이지
+		if(pathInfo.equals("/vacationListForm")) {
+			nextPage = "vacationListForm";
+		//요청처리
+		}else if(pathInfo.equals("/request")) {
+			RequestVO vo = new RequestVO();
+				vo = RequestVO.builder()
+						.requestNo(vo.getRequestNo("requestNo"))
+						.build();
+			response.sendRedirect(contextPath+"/main");
+		}
+		else {
+			System.out.println("Request : 찾을수 없는 페이지");
+		}
+		
+		rd = request.getRequestDispatcher(PRE+nextPage+SUR);
+		rd.forward(request, response);
+	}
+}

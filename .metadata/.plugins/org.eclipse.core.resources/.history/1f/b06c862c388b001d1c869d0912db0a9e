@@ -1,0 +1,9 @@
+package com.domain;
+
+public class RequestVO {
+	
+	String name;
+	String 
+	String hopeDate;
+	String reason;
+}

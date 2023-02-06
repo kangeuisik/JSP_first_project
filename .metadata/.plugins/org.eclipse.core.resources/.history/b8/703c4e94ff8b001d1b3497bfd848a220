@@ -1,0 +1,70 @@
+package com.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.sql.DataSource;
+
+import com.common.ConnectionUtil;
+import com.domain.RequestVO;
+
+public class RequestDao {
+	
+	private DataSource dataSource;
+	
+	public RequestDao() {
+		dataSource = ConnectionUtil.getDataSource();
+	}
+	
+	//요청 현황
+	public List<RequestVO> requestResultList(){
+		String query = "select * from board_request order by desc";
+		List<RequestVO> resultList = new ArrayList<RequestVO>();
+		try (
+			Connection conn = dataSource.getConnection();	
+			PreparedStatement pstmt = conn.prepareStatement(query);
+			ResultSet rs = pstmt.executeQuery();
+			){
+			while(rs.next()){
+				RequestVO vo= RequestVO.builder()
+						.requestNo(rs.getInt("requestNo"))
+						.name(rs.getString("rname"))
+						.militaryNo(rs.getString("militaryNo"))
+						.requestDate(rs.getString("requestDate"))
+						.reason(rs.getString("reason"))
+						.build(); 
+				resultList.add(vo);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return resultList;
+		
+	}
+	public int getNewBno() {
+		int boardNo = 0;
+		String query = "SELECT MAX(RequestNo)+1 as boardNO FROM BOARD_request";
+		try (
+			Connection conn = dataSource.getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(query);
+			ResultSet rs = pstmt.executeQuery();
+			){
+			if(rs.next()) {
+				boardNo = rs.getInt("boardNO");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return boardNo;
+	}
+	public void request(RequestVO vo) {
+		String query ="INSERT INTO Board_request(RequestNo,name,militaryNo,RequestDate,Reason) values(RequestNo_seq.nextval,?,?,?,?);";
+		
+		return null;
+	}
+	
+}

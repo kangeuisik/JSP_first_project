@@ -1,0 +1,24 @@
+package com.dao;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.sql.DataSource;
+
+import com.common.ConnectionUtil;
+import com.domain.ReplyVO;
+
+public class ReplyDao {
+	
+	private DataSource dataSource;
+	
+	public ReplyDao() {
+		dataSource = ConnectionUtil.getDataSource();
+	}
+
+	public List<ReplyVO> list(int bno) {
+		List<ReplyVO> list = new ArrayList<ReplyVO>();
+		String query = "";
+		return list;
+	}
+}

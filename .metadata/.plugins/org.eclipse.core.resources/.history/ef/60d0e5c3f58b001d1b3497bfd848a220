@@ -1,0 +1,16 @@
+package com.dao;
+
+import javax.sql.DataSource;
+
+import com.common.ConnectionUtil;
+
+public class RequestDao {
+	
+	private DataSource dataSource;
+	
+	public RequestDao() {
+		dataSource = ConnectionUtil.getDataSource();
+	}
+	
+	//요청 목록
+}

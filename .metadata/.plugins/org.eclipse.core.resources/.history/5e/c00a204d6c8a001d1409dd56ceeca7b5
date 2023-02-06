@@ -1,0 +1,47 @@
+package com.controller;
+
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+@WebServlet("/requestboard")
+public class ReplyController extends HttpServlet {
+
+       
+
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doHandle(request, response);
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doHandle(request, response);
+	}
+	protected void doHandle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String pathInfo = request.getPathInfo();
+		String contextPath = request.getContextPath();
+		final String PRE = "/WEB-INF/views/requestboard/";
+		final String SUR = ".jsp";
+		
+		String nextPage = null;
+		RequestDispatcher rd = null;
+		
+		if(pathInfo.equals("/vacationListForm")) {
+			nextPage = "vacationListForm";
+		}else if(pathInfo.equals("/request")) {
+			
+		}
+		else {
+			System.out.println("Request : 찾을수 없는 페이지");
+		}
+		
+		rd = request.getRequestDispatcher(PRE+nextPage+SUR);
+		rd.forward(request, response);
+	}
+}
