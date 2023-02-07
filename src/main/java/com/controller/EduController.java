@@ -1,6 +1,7 @@
 package com.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -61,9 +62,9 @@ public class EduController extends HttpServlet {
 		}else if(pathInfo.equals("/memberEduForm")) {
 			List<Category> subList = service.subList();
 			request.setAttribute("subList", subList);
-			List<MemberVO> memberList = Mservice.memberList();
-			request.setAttribute("memberList", memberList);
 			
+			String paramMno = request.getParameter("mno");
+			System.out.println(Integer.parseInt(paramMno));
 			nextPage="memberEduForm";
 			
 		//점수 =입력받기
@@ -71,16 +72,19 @@ public class EduController extends HttpServlet {
 		//입력받은 scoreRank를 저장
 		//결과 처리
 		}else if(pathInfo.equals("/rankResult")) {
-			List<MemberVO> memberList = Mservice.memberList();
-			request.setAttribute("memberList", memberList);
-			int mno = (int) request.getAttribute("mno");
+			String paramMno = request.getParameter("mno");
+			System.out.println(Integer.parseInt(paramMno));
 			
-			Category cateList = Category.builder()
-					.subject(request.getParameter("subject"))
-					.scoreRank(request.getParameter("scoreRank"))
-					.build();
-
-
+				Category Cate = Category.builder()
+						.mno(0)
+						.scoreRank(request.getParameter("scoreRank"))
+						.build(); 
+			System.out.println(Cate);
+				
+				
+				
+			response.sendRedirect(contextPath+"/edu/rankResult");
+			return;
 		}
 		
 		else {

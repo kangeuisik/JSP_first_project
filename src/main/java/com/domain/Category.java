@@ -14,6 +14,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @Builder
 public class Category {
+	private int mno;
 	private String subject;
 	private String scoreRank;
 }

@@ -17,10 +17,8 @@ public class EduService {
 		
 	}
 
-	public void eduResultList(List<MemberVO> vo, Category cateList) {
-		dao.eduResultList(vo,cateList);
-		
-	}
+
+
 	
 
 

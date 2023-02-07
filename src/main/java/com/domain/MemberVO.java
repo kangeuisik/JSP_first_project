@@ -34,5 +34,7 @@ public class MemberVO {
 	public enum MemberGrade{
 		ROLE_ADMIN, ROLE_SERGANT, ROLE_PARENTS
 	}
-	private Category category; 
+	private Category category;
+	
+	
 }
