@@ -16,7 +16,7 @@
 	<div class="jumbotron">
 		<h1>훈련수준 입력 리스트</h1>	
 	</div>
-	<c:forEach items="${ }" var="e">
+
 		<form id="listForm">
 			<div class="row">
 				<h3>???</h3>
@@ -41,7 +41,7 @@
 				</table>
 			</div>
 		</form>
-	</c:forEach>
+
 </div>
 </body>
 </html>

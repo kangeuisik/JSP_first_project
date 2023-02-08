@@ -1,8 +1,11 @@
 package com.controller;
 
 import java.io.IOException;
+import java.sql.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -27,6 +30,7 @@ public class EduController extends HttpServlet {
 
     private EduService service;
     private MemberService Mservice;
+	private Category updateCate;
 
     @Override
     public void init(ServletConfig config) throws ServletException {
@@ -60,11 +64,10 @@ public class EduController extends HttpServlet {
 			
 		//평가결과 입력창
 		}else if(pathInfo.equals("/memberEduForm")) {
-			List<Category> subList = service.subList();
-			request.setAttribute("subList", subList);
-			
 			String paramMno = request.getParameter("mno");
-			System.out.println(Integer.parseInt(paramMno));
+			int mno = Integer.parseInt(paramMno);
+			int getMno = service.getMno(mno);
+			request.setAttribute("mno", getMno);
 			nextPage="memberEduForm";
 			
 		//점수 =입력받기
@@ -73,18 +76,32 @@ public class EduController extends HttpServlet {
 		//결과 처리
 		}else if(pathInfo.equals("/rankResult")) {
 			String paramMno = request.getParameter("mno");
-			System.out.println(Integer.parseInt(paramMno));
+			int mno = Integer.parseInt(paramMno);
+			String[] subjects = request.getParameterValues("subject");
+			String[] scoreRanks = request.getParameterValues("scoreRank");
 			
-				Category Cate = Category.builder()
-						.mno(0)
-						.scoreRank(request.getParameter("scoreRank"))
-						.build(); 
-			System.out.println(Cate);
-				
-				
-				
-			response.sendRedirect(contextPath+"/edu/rankResult");
+			List<Category> categories = new ArrayList<Category>(); 
+			for(int i=0;i<subjects.length;i++) {
+				Category category = Category.builder()
+						.mno(mno)
+						.subject(subjects[i])
+						.scoreRank(scoreRanks[i]).build();
+				categories.add(category);
+			}
+			
+			for(Category c : categories) {
+				Category vo = Category.builder()
+					.mno(c.getMno())
+					.subject(c.getSubject())
+					.scoreRank(c.getScoreRank())
+					.build();
+				service.addResult(vo);
+				System.out.println(vo);
+ 			}
+			response.sendRedirect(contextPath+"/edu/result");
 			return;
+		}else if(pathInfo.equals("/result")) {
+			nextPage="/result";
 		}
 		
 		else {

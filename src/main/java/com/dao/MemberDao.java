@@ -35,6 +35,7 @@ public class MemberDao {
 				pstmt.setString(6, vo.getAddr());
 				pstmt.setString(7, vo.getEmail());
 				pstmt.setString(8, vo.getBirth());
+				
 				pstmt.executeUpdate();
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -101,6 +102,7 @@ public class MemberDao {
 						.email(rs.getString("email"))
 						.birth(rs.getString("birth"))
 						.joinDate(rs.getDate("joinDate"))
+								
 						.build();
 				memberList.add(vo);
 			}

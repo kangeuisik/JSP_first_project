@@ -14,25 +14,25 @@
 	</div>
 	<div class="container">
 	<form action="${contextPath }/edu/rankResult" method="post">
-
+	회원번호${mno}
 		<table>
 			<tr>
 				<th>과목</th>
-				<c:forEach items="${subList }" var="s">
-					<th>${s.subject }</th>
-					${s.mno }
-				</c:forEach>
+				<input type="hidden" name="mno" value="${mno}">
+				<th>사격<input type="hidden" name="subject" value="shot"></th>
+				<th>화생방<input type="hidden" name="subject" value="chemical"></th>
+				<th>구급법<input type="hidden" name="subject" value="emergency"></th>
+				<th>제식<input type="hidden" name="subject" value="rule"></th>
 			</tr>
 			<tr>
 				<th>평가결과</th>
-				<td><input type="text" class="form-control" name="scoreRank[0]"></td>
-				<td><input type="text" class="form-control" name="scoreRank[1]"></td>
-				<td><input type="text" class="form-control" name="scoreRank[2]"></td>
-				<td><input type="text" class="form-control" name="scoreRank[3]"></td>
-				
+				<td><input type="text" class="form-control" name="scoreRank"></td>
+				<td><input type="text" class="form-control" name="scoreRank"></td>
+				<td><input type="text" class="form-control" name="scoreRank"></td>
+				<td><input type="text" class="form-control" name="scoreRank"></td>			
 			</tr>
 		</table>
-			<button class="btn btn-info">저장</button>		
+		<button class="btn btn-info">저장</button>		
 	</form>
 	</div>
 </div>
