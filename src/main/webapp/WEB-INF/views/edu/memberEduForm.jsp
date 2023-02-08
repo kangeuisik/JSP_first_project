@@ -13,7 +13,7 @@
 		<h1>평가 결과 입력</h1>	
 	</div>
 	<div class="container">
-	<form action="${contextPath }/edu/rankResult" method="post">
+	<form action="${contextPath }/edu/rankResult?mno=${mno}" method="post">
 	회원번호${mno}
 		<table>
 			<tr>

@@ -39,7 +39,7 @@
 						<td>
 						<a href="${contextPath}/edu/memberEduForm?mno=${m.mno}" class="addRank btn btn-info">
 						평가결과 입력하기</a>
-						<a href="${m.mno }" class="resultScore btn btn-info">
+						<a href="${contextPath}/edu/result?mno=${m.mno}" class="resultScore btn btn-info">
 						수준 확인</a>
 						</td>
 					</tr>

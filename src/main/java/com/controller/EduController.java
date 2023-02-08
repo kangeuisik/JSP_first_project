@@ -30,7 +30,7 @@ public class EduController extends HttpServlet {
 
     private EduService service;
     private MemberService Mservice;
-	private Category updateCate;
+	
 
     @Override
     public void init(ServletConfig config) throws ServletException {
@@ -75,6 +75,7 @@ public class EduController extends HttpServlet {
 		//입력받은 scoreRank를 저장
 		//결과 처리
 		}else if(pathInfo.equals("/rankResult")) {
+			
 			String paramMno = request.getParameter("mno");
 			int mno = Integer.parseInt(paramMno);
 			String[] subjects = request.getParameterValues("subject");
@@ -101,7 +102,14 @@ public class EduController extends HttpServlet {
 			response.sendRedirect(contextPath+"/edu/result");
 			return;
 		}else if(pathInfo.equals("/result")) {
-			nextPage="/result";
+			String PMNO = request.getParameter("mno");
+			int mno = Integer.parseInt(PMNO);
+			System.out.println(mno);
+			List<MemberVO> testResult = service.testResult(mno);
+			
+			request.setAttribute("testResult", testResult);
+			
+			nextPage="result";
 		}
 		
 		else {
