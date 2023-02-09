@@ -31,6 +31,10 @@ public class EduService {
 		return dao.testResult(mno);
 		
 	}
+
+
+
+
 	
 
 

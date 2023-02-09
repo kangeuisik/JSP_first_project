@@ -77,7 +77,7 @@ height:20;
 	      <div class="dropdown-menu">
 	        <a class="dropdown-item" href="#">근무표</a>
 	        <a class="dropdown-item" href="${contextPath }/requestboard/vacationResult">휴가 신청 및 현황</a>
-	        <a class="dropdown-item" href="#">훈련수준</a>
+	        <a class="dropdown-item" href="${contextPath }/edu/memberEduList">훈련수준</a>
 	        <a class="dropdown-item" href="${contextPath }/board/sergantList">병사용 게시판</a>
 	      </div>
 	    </li>

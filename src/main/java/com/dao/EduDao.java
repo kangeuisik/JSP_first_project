@@ -104,6 +104,7 @@ public class EduDao {
 				){
 				while(rs.next()) {
 					MemberVO vo = MemberVO.builder()
+							.mno(rs.getInt("mno"))
 							.platoon(rs.getString("platoon"))
 							.mrank(rs.getString("mrank"))
 							.name(rs.getString("name"))
@@ -122,6 +123,8 @@ public class EduDao {
 		}
 		return testResult;
 	}
+
+
 
 
 

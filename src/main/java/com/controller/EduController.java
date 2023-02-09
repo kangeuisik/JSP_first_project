@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -68,6 +69,9 @@ public class EduController extends HttpServlet {
 			int mno = Integer.parseInt(paramMno);
 			int getMno = service.getMno(mno);
 			request.setAttribute("mno", getMno);
+			
+			List<MemberVO> memberList = Mservice.memberList();
+			request.setAttribute("memberList", memberList);
 			nextPage="memberEduForm";
 			
 		//점수 =입력받기
@@ -78,6 +82,7 @@ public class EduController extends HttpServlet {
 			
 			String paramMno = request.getParameter("mno");
 			int mno = Integer.parseInt(paramMno);
+			request.setAttribute("mno", mno);
 			String[] subjects = request.getParameterValues("subject");
 			String[] scoreRanks = request.getParameterValues("scoreRank");
 			
@@ -97,16 +102,20 @@ public class EduController extends HttpServlet {
 					.scoreRank(c.getScoreRank())
 					.build();
 				service.addResult(vo);
-				System.out.println(vo);
  			}
-			response.sendRedirect(contextPath+"/edu/result");
+
+			response.sendRedirect(contextPath+"/edu/memberEduList");
 			return;
 		}else if(pathInfo.equals("/result")) {
-			String PMNO = request.getParameter("mno");
-			int mno = Integer.parseInt(PMNO);
+
+			String parameter = request.getParameter("mno");
+			int mno = Integer.parseInt(parameter);
 			System.out.println(mno);
 			List<MemberVO> testResult = service.testResult(mno);
 			
+			//
+			
+			System.out.println(testResult);
 			request.setAttribute("testResult", testResult);
 			
 			nextPage="result";
