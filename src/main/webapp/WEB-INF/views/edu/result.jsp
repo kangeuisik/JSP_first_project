@@ -18,10 +18,14 @@
 		<h1>평가결과</h1>	
 	</div>
 	<div class="containeer">
+	<div>
 		<table>
 			<tr>
 				<th>
 					<div class="input-group mb-3">
+					    <div class="input-group-prepend">
+							<span class="input-group-text">${testResult[0].platoon }</span>
+					    </div>
 					    <div class="input-group-prepend">
 							<span class="input-group-text">${testResult[0].mrank }</span>
 					    </div>
@@ -35,6 +39,8 @@
 				</th>
 			</tr>
 		</table>
+		</div>
+		<div>
 		<table class="table">
 			<tr>
 				<th>평가과목</th>
@@ -52,6 +58,7 @@
 				</c:forEach>	
 			</tr>
 		</table>
+		</div>
 	</div>
 		
 </div>

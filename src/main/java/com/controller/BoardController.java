@@ -99,6 +99,7 @@ public class BoardController extends HttpServlet {
 			Map<String, String> req = multiReq.getMultipartRequest(request);
 			String imageFileName = req.get("imageFileName");
 			BoardVO vo = BoardVO.builder()
+					.bid(req.get("bid"))
 					.title(req.get("title"))
 					.content(req.get("content"))
 					.writer(req.get("writer"))
@@ -117,6 +118,7 @@ public class BoardController extends HttpServlet {
 			Map<String, String> req = multiReq.getMultipartRequest(request);
 			String paramBno = req.get("bno");
 			int bno = Integer.parseInt(paramBno);
+			String bid = req.get("bid");
 			String title = req.get("title");
 			String content = req.get("content");
 			String imageFileName = req.get("imageFileName");

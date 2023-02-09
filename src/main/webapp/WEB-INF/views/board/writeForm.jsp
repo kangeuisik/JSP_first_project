@@ -16,6 +16,9 @@
 	<form action="${contextPath }/board/write" method="post" enctype="multipart/form-data">
 			<div class="form-group">
 				제목 : <input type="text" class="form-control" name="title">
+				분류 : <select>
+						<option value="bid.notice"></option>
+					  </select>
 			</div>
 			<div class="form-group">
 				내용 : <textarea rows="10" class="form-control" name="content"></textarea>

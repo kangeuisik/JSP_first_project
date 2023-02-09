@@ -112,10 +112,7 @@ public class EduController extends HttpServlet {
 			int mno = Integer.parseInt(parameter);
 			System.out.println(mno);
 			List<MemberVO> testResult = service.testResult(mno);
-			
-			//
-			
-			System.out.println(testResult);
+
 			request.setAttribute("testResult", testResult);
 			
 			nextPage="result";

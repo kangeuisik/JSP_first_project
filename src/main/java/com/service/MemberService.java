@@ -31,6 +31,11 @@ public class MemberService {
 		return dao.memberList();
 	}
 
+	public MemberGrade findByGrade(String id) {
+		return dao.findMemberGradeById(id);
+		
+	}
+
 	
 		
 	

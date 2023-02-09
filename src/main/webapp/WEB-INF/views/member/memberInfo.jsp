@@ -37,7 +37,7 @@
 					<td>${m.email }</td>
 					<td>${m.birth }</td>
 					<td>${m.joinDate }</td>
-					<td>회원등급</td>
+					<td>?</td>
 				</tr>
 				</c:forEach>
 			</table>

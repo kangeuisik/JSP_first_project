@@ -77,6 +77,7 @@ public class BoardDao {
 				if(rs.next()) {
 					vo=BoardVO.builder()
 							.bno(rs.getInt("bno"))
+							.bid(rs.getString("bid"))
 							.title(rs.getString("title"))
 							.content(rs.getString("content"))
 							.writer(rs.getString("writer"))
@@ -92,17 +93,18 @@ public class BoardDao {
 	}
 //글쓰기
 	public int insertBoard(BoardVO vo) {
-		String insertQuery= "insert into BOARD_TBL(bno,title,content,writer,imageFileName) values (?,?,?,?,?)";
+		String insertQuery= "insert into BOARD_TBL(bno,Bid,title,content,writer,imageFileName) values (?,?,?,?,?,?)";
 		int boardNo=getNewBno();
 		try (
 			Connection conn = dataSource.getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(insertQuery);
 			){
 			pstmt.setInt(1, boardNo);
-			pstmt.setString(2,vo.getTitle());
-			pstmt.setString(3, vo.getContent());
-			pstmt.setString(4, vo.getWriter());
-			pstmt.setString(5, vo.getImageFileName());
+			pstmt.setString(2, vo.getBid());
+			pstmt.setString(3,vo.getTitle());
+			pstmt.setString(4, vo.getContent());
+			pstmt.setString(5, vo.getWriter());
+			pstmt.setString(6, vo.getImageFileName());
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();

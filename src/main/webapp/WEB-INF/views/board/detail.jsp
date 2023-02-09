@@ -22,8 +22,10 @@
 					${board.bno}
 					<input type="hidden" name="bno" value="${board.bno}">
 				</td>
-				<th>조회수</th>
-				<td>0</td>
+				<th>분류</th>
+				<td>${board.bid =='notice' ? '공지' :
+					  board.bid =='sergant' ? '병사게시판' :
+					  board.bid =='admin' ? '업무참고' : '가족게시판' }</td>
 			</tr>
 			<tr>
 				<th>작성자</th>
