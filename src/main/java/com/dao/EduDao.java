@@ -124,6 +124,37 @@ public class EduDao {
 		return testResult;
 	}
 
+	public List<MemberVO> byMnoMember(int mno) {
+		int getMno = getMno(mno);
+		String query = "select *from mt_member where mno = ?";
+		List<MemberVO> list = new ArrayList<MemberVO>();
+		try (
+				Connection conn = dataSource.getConnection();	
+				PreparedStatement pstmt = conn.prepareStatement(query);
+				){
+				pstmt.setInt(1, getMno);
+				pstmt.executeUpdate();
+				try(
+					ResultSet rs = pstmt.executeQuery();
+					){
+					while(rs.next()) {
+						MemberVO vo = MemberVO.builder()
+								.mno(rs.getInt("mno"))
+								.platoon(rs.getString("platoon"))
+								.mrank(rs.getString("mrank"))
+								.militaryNo(rs.getString("militaryNo"))
+								.name(rs.getString("name"))
+								.build();
+						list.add(vo);
+					}
+				}
+			}catch (Exception e) {
+					e.printStackTrace();
+			}
+		return list;
+	}
+	
+}
 
 
 
@@ -134,7 +165,7 @@ public class EduDao {
 	
 
 
-}
+
 	
 
 

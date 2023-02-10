@@ -3,6 +3,8 @@
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
    <c:set var="contextPath" value="${pageContext.request.contextPath }"/>
    <c:set var="auth" value="${sessionScope.auth}"/>
+
+   
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,7 +25,7 @@
 <style>
 .Theader{height:15;}
 .banner{
-background:url(resources/images/banner.png);
+background:url(${contextPath}/resources/images/banner.png);
 height:20;
 }
 </style>
@@ -35,8 +37,7 @@ height:20;
 	  <div class="col-3 ">.col</div>
 	  <div class="col-6 bg-outline-info">
 	  	<a href="${contextPath }/main">
-	  	<img src="resources/images/jsp로고.png">
-	  	행정업무 시스템
+	  	<img src="${contextPath }/resources/images/jsp로고.png" />
 	  	</a>
 	  </div>
 	  <div class="col-3 ">.col</div>

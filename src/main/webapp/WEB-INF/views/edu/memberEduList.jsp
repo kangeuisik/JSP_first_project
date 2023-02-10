@@ -13,7 +13,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-${auth }
+
 <div class="container my-3">
 	<div class="jumbotron">
 		<h1>훈련수준 입력 리스트</h1>	

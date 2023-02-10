@@ -92,10 +92,12 @@ public class BoardController extends HttpServlet {
 			
 		//글쓰기 폼
 		}else if(pathInfo.equals("/writeForm")) {
+			
 			nextPage="writeForm";
 			
 		//글쓰기 처리
 		}else if(pathInfo.equals("/write")) {
+			//
 			Map<String, String> req = multiReq.getMultipartRequest(request);
 			String imageFileName = req.get("imageFileName");
 			BoardVO vo = BoardVO.builder()
@@ -105,13 +107,26 @@ public class BoardController extends HttpServlet {
 					.writer(req.get("writer"))
 					.imageFileName(req.get("imageFileName"))
 					.build();
-			
 			int boardNO = service.insertBoard(vo);
 			if(imageFileName!=null && imageFileName.length()>0 ) {
 				multiReq.uploadImage(boardNO, imageFileName);
 			}
-			response.sendRedirect(contextPath+"/board/list");
-			return;
+			String bid = vo.getBid();
+			if(bid.equals("notice")) {
+				response.sendRedirect(contextPath+"/board/noticeList");
+				return;
+			}else if(bid.equals("admin")) {
+				response.sendRedirect(contextPath+"/board/adminList");
+				return;
+			}else if(bid.equals("sergant")) {
+				response.sendRedirect(contextPath+"/board/sergantList");
+				return;
+			}else {
+				response.sendRedirect(contextPath+"/board/parentsList");
+				return;
+			}
+			
+			
 			
 		//글 수정 처리
 		}else if(pathInfo.equals("/modBoard")) {
@@ -141,8 +156,19 @@ public class BoardController extends HttpServlet {
 					oldFile.delete();
 				}
 			}
-			response.sendRedirect(contextPath+"/board/list");
-			return;
+			if(bid.equals("notice")) {
+				response.sendRedirect(contextPath+"/board/noticeList");
+				return;
+			}else if(bid.equals("admin")) {
+				response.sendRedirect(contextPath+"/board/adminList");
+				return;
+			}else if(bid.equals("sergant")) {
+				response.sendRedirect(contextPath+"/board/sergantList");
+				return;
+			}else {
+				response.sendRedirect(contextPath+"/board/parentsList");
+				return;
+			}
 			
 		//삭제
 		}else if(pathInfo.equals("/removeBoard")) {

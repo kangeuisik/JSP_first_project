@@ -1,18 +1,25 @@
 let replyService = {
+	//댓글 목록
 	list : function(bno){
 		console.log('list' + bno)
 		$.ajax({
 			type : 'get',
-			url : `${contextPath}/board/reply/list`,
+			url : `${contextPath}/reply/list`,
 			data : {bno : bno},
 			success : function(replyList){
+				if(replyList.length==0){
+					return;
+				}
+				
 				replyListRender(replyList);
+				alert('댓글나와')
 			}, 
 			error: function(){
 				alert('댓글목록 조회 실패')				
 			}
 		});//ajax end
 	},
+	//댓글 상세요청
 	detail : function(){
 		console.log('댓글조회')
 	},
@@ -24,12 +31,10 @@ let replyService = {
 			data : replyVO, 
 			success : function(result){
 				$('.reply_content').val('');
-				$('#feedback').find('.modal-body').html(result);
-				$('#feedback').modal('show');
-				replyService.list(replyVO.bno);
+				replyService.feedbackMessge('댓글 쓰기',result)
 				alert('댓글 등록 성공');
 			}, 
-			error : function(){
+			error : function(xhr){
 				alert('댓글 등록 에러');
 			}
 		}); // ajax end 
@@ -41,21 +46,24 @@ let replyService = {
 	
 	remove : function(){
 		console.log('댓글삭제')
-				$.ajax({
+		$.ajax({
 			type : 'post',
 			url : `${contextPath}/reply/remove`,
-			data : { bno : bno, 
-					 rno : rno},
+			data : {rno : rno}, 
 			success : function(result){
-				alert('삭제')
+				feedbackMessge('댓글삭제',result)
 			},
 			error : function(){
 				alert('삭제 실패')
 			}
 		});//ajax
+	},
+ 	feedbackMessge : function(title,result){
+		$('#feedback').find('.modal-title').html(title);
+		$('#feedback').find('.modal-body').html(result);
+		$('#feedback').modal('show');
 	}
 };
-
 
 
 
@@ -94,4 +102,10 @@ function replyListRender(replyList){
 	}
 	output += `</li>`;
 	$('.replyList ul').html(output);	
+}
+
+
+function formatDate(dateStr){
+	let dateArr = dateStr.split(',')
+	return `${dateArr[1]}년 ${dateArr[0]}일`
 }

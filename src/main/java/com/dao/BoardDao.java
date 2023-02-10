@@ -93,11 +93,17 @@ public class BoardDao {
 	}
 //글쓰기
 	public int insertBoard(BoardVO vo) {
-		String insertQuery= "insert into BOARD_TBL(bno,Bid,title,content,writer,imageFileName) values (?,?,?,?,?,?)";
+		//수정 필요
+		//특정 조건 : bid 분류가 notice, admin, parents, sergant의 경우에 해당 카테고리에 업로드
+//		String query= "insert into BOARD_TBL(bno,Bid,title,content,writer,imageFileName) values (?,?,?,?,?,?)";
+		String query= "INSERT INTO BOARD_TBL (bno,Bid,title,content,writer,imageFileName) ";
+				query+= "SELECT ?,?,?,?,?,?";
+				query+= "FROM DUAL WHERE EXISTS(SELECT * FROM BOARD_TBL ";
+				query+= "WHERE bid = 'notice' or bid='admin' or bid='sergant' or bid='parents')";
 		int boardNo=getNewBno();
 		try (
 			Connection conn = dataSource.getConnection();
-			PreparedStatement pstmt = conn.prepareStatement(insertQuery);
+			PreparedStatement pstmt = conn.prepareStatement(query);
 			){
 			pstmt.setInt(1, boardNo);
 			pstmt.setString(2, vo.getBid());

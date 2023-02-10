@@ -23,4 +23,7 @@ public class BoardVO {
 	private String imageFileName;
 	private Date writeDate;
 	private int replyCount;
+
+
+
 }

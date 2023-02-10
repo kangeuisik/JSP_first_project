@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp" %>
+<script src="${contextPath }/resources/js/reply/replyService.js"></script>
 <script src="${contextPath }/resources/js/board/detail.js"></script>
-<script src="${contextPath }/resources/js/board/reply/replyService.js"></script>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,6 +14,7 @@
 	<div class="jumbotron">
 		<h1>글상세</h1>
 	</div>
+	<img src="${contextPath}/fileDownload?&no=${board.bno}&imageFileName=${board.imageFileName}&path=board">
 	<form id="viewForm" enctype="multipart/form-data">
 		<table class="table">
 			<tr>
@@ -23,7 +24,8 @@
 					<input type="hidden" name="bno" value="${board.bno}">
 				</td>
 				<th>분류</th>
-				<td>${board.bid =='notice' ? '공지' :
+				<td> <input type="hidden" name="bid" value="${board.bid }" class="bidChoice">
+					 ${board.bid =='notice' ? '공지' :
 					  board.bid =='sergant' ? '병사게시판' :
 					  board.bid =='admin' ? '업무참고' : '가족게시판' }</td>
 			</tr>
@@ -131,7 +133,7 @@
         <h4 class="modal-title">댓글 등록</h4>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
-      <div class="modal-body"></div>
+      <div class="modal-body">Modal body..</div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">닫기</button>
       </div>
@@ -161,3 +163,16 @@
 
 </body>
 </html>
+
+<script>
+$(function(){
+	let cate = $('.bidChoice').val();
+	
+	$('.toModForm').on('click',function(){
+		console.log(cate);
+	})
+	
+	
+})
+
+</script>

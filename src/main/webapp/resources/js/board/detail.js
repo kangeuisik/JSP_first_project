@@ -43,10 +43,14 @@ $(function(){
 	
 	// 수정 처리 
 	$('.modify').on('click',function(){
+		let cate = $('.bidChoice').val();
+		
 		viewForm.attr({
 			"action" : `${contextPath}/board/modBoard`,
 			"method" : "post"
 		}).submit();
+		alert('수정되었습니다.')
+		
 	});
 	
 	// 삭제 처리 
@@ -58,16 +62,27 @@ $(function(){
 	});
 });
 
+
+//ㄷ새글 관련 이벤트
 $(function(){
 	let bno = $('input[name="bno"]').val();
 	// 댓글 목록 
+	console.log(replyService);
+	
+	
 	replyService.list(bno);
 	
 	// 댓글 쓰기 버튼 이벤트
 	$('.reply_write').on('click',function(){
-		let writer = $('.reply_writer').val();
-		let reply = $('.reply_content').val();
-		
+		let writer = $('.replyForm .reply_writer').val();
+		let reply = $('.replyForm .reply_content').val();
+		if(reply.length<5){
+			$('.reply_content').attr('placeholder','최소5글자 이상 입력하세요')
+							.addClass('reply_content_error');
+			alert('no')
+			return;
+		}
+		alert('ok')
 		let replyVO = {
 			bno : bno, 
 			reply : reply, 
@@ -87,7 +102,7 @@ $(function(){
 	$('.replyList').on('click','.reply_delBtn',function(){
 		let rno = $(this).closest('div').data('rno');
 		
-		replyService.remove(bno,rno);
+		replyService.remove(rno);
 	});
 	
 	

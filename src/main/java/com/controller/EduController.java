@@ -70,8 +70,9 @@ public class EduController extends HttpServlet {
 			int getMno = service.getMno(mno);
 			request.setAttribute("mno", getMno);
 			
-			List<MemberVO> memberList = Mservice.memberList();
-			request.setAttribute("memberList", memberList);
+			List<MemberVO> byMnoMember = service.byMnoMember(mno);
+			request.setAttribute("list", byMnoMember);
+			System.out.println(byMnoMember);
 			nextPage="memberEduForm";
 			
 		//점수 =입력받기

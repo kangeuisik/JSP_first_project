@@ -33,6 +33,15 @@ public class EduService {
 	}
 
 
+	public List<MemberVO> byMnoMember(int mno) {
+		return dao.byMnoMember(mno);
+		
+	}
+
+
+
+
+
 
 
 	

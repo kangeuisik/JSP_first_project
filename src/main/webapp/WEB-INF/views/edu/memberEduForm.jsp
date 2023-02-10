@@ -16,7 +16,10 @@
 	<div class="container">
 	<form action="${contextPath }/edu/rankResult" method="post">
 		<input type="hidden" name="mno" value="${mno}">
-	회원번호${mno}
+	<table>	
+		<h3>${list[0].platoon} ${list[0].mrank} ${list[0].name} </h3> 
+		<h5>군번 : ${list[0].militaryNo}</h5>
+	</table>
 		<table>
 			<tr>
 				<th>과목</th>
