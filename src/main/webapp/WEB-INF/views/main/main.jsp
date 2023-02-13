@@ -47,8 +47,46 @@ width: 10;
 </div>
 
 <div class="row">
-	<div class="col-8 mt-4 ml-3"><h1>바로가기</h1></div>
+	<div class="col-8 mt-4 ml-3 ">
+	<table class="table-info container">
+		<tr>
+			<th>
+				<a href="${contextPath }/board/adminList">
+			  		<img src="${contextPath }/resources/images/업무참고바로가기.png" /><br>
+			  	</a>
+			  		<h5>업무참고</h5>
+		  	</th>			
+		  	<th>
+				<a href="${contextPath }/request/requestForm">
+			  		<img src="${contextPath }/resources/images/휴가신청 바로가기 로고.png" /><br>
+			  	</a>
+			  		<h5>휴가신청하기</h5>
+		  	</th>
+		   	<th>
+				<a href="${contextPath }/request/requestForm">
+			  		<img src="${contextPath }/resources/images/훈련수준확인.png" /><br>
+			  	</a>
+			  		<h5>휴가신청하기</h5>
+		  	</th>
+		  	<th>
+				<a href="${contextPath }/edu/memberEduList">
+			  		<img src="${contextPath }/resources/images/회원가입 바로가기.png" /><br>
+			  	</a>
+			  		<h5>회원가입</h5>
+		  	</th>
+		   	<th>
+				<a href="${contextPath }/board/sergantList">
+			  		<img src="${contextPath }/resources/images/게시판 바로가기.png" /><br>
+			  	</a>
+			  		<h5>병사게시판</h5>
+		  	</th>
+	  	</tr>
+	 </table>
+	</div>
 	<div class="col-3 mt-4">
+		<table class="table container bg-info">
+		
+		</table>
 		<ul>
 			<nav class="navbar navbar-expand-sm bg-info navbar-dark mr-3">
 		 	 	<form class="form-inline" action="/action_page.php">
