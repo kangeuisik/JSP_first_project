@@ -12,10 +12,10 @@ width: 10;
 
 <div class="row">
 	<div class="container topMenu col-8 ml-4 ">
-	  <div class="card">
+	  <div class="card text-center">
 	  <h2>이미지 파일</h2>
 	    <div class="card-body">
-	      <h4 class="card-title">Card title</h4>
+	      <h4 class="card-title">행사소식 대표글</h4>
 	      <p class="card-text">Some example text. Some example text.</p>
 	      <a href="#" class="#">제 목</a>
 	      <a href="#" class="#">내용내용내용내용내용내용내용내용</a>
@@ -49,7 +49,7 @@ width: 10;
 <div class="row">
 	<div class="col-8 mt-4 ml-3 ">
 	<table class="table-info container">
-		<tr>
+		<tr class="text-center">
 			<th>
 				<a href="${contextPath }/board/adminList">
 			  		<img src="${contextPath }/resources/images/업무참고바로가기.png" /><br>

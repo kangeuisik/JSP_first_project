@@ -34,10 +34,14 @@ height:20;
  <!-- 상단 이미지 -->
  <div class="container">
 	<div class="Theader row mt-2">
-	  <div class="col-3 ">.col</div>
+	  <div class="col-3 ">
+	  	<img src="${contextPath }/resources/images/태극기.png" />
+
+	  </div>
 	  <div class="col-6 bg-outline-info">
 	  	<a href="${contextPath }/main">
 	  	<img src="${contextPath }/resources/images/jsp로고.png" />
+	  	oooo 부대홈페이지
 	  	</a>
 	  </div>
 	  <div class="col-3 ">.col</div>
